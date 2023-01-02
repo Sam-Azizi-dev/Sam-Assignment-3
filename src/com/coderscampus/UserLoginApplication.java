@@ -9,8 +9,8 @@ public class UserLoginApplication {
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		Scanner scanner = new Scanner(System.in);
 		UserService userService = new UserService();
-		Users[] users = userService.exportUsersFromFile();
-		String name;
+		User loggedInUser = null;
+
 		int counter;
 
 		for (counter = 0; counter < 5; counter++) {
@@ -18,9 +18,9 @@ public class UserLoginApplication {
 			String userName = scanner.nextLine();
 			System.out.print("Enter your password:");
 			String password = scanner.nextLine();
-			name = userService.validationUser(users, userName, password);
-			if (name != null) {
-				System.out.println("Welcome:" + name);
+			loggedInUser = userService.getUserByUsernameAndPassword(userName, password);
+			if (loggedInUser != null) {
+				System.out.println("Welcome:" + loggedInUser.getName());
 				break;
 			} else if (counter != 4) {
 				System.out.println("Invalid login, please try again");
