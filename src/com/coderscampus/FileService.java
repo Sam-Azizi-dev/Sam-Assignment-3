@@ -10,7 +10,7 @@ public class FileService {
 	public User[] exportUsersFromFile() throws FileNotFoundException, IOException {
 		User[] users = new User[5];
 		BufferedReader fileReader = null;
-		String userProperties = "";
+		String userProperties;
 		int i = 0;
 		fileReader = new BufferedReader(new FileReader("data.txt"));
 		while ((userProperties = fileReader.readLine()) != null) {
